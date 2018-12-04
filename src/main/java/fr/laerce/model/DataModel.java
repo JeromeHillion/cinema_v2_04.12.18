@@ -36,8 +36,34 @@ import java.util.List;
 
 public class DataModel{
 
+    //On créer nos listes
     private List<Personne> personnes = new ArrayList<>();
     private List<Film> films = new ArrayList<>();
+    private List<Role> roles = new ArrayList<>();
+
+    public void setPersonnes(List<Personne> personnes) {
+        this.personnes = personnes;
+    }
+
+    public List<Personne> getPersonnes() {
+        return personnes;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
+    }
+
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
     public DataModel() {
 
@@ -131,40 +157,58 @@ public class DataModel{
                         "bataille. A leur retour, Tristan et Alfred se battent pour conquérir le cœur de " +
                         "la belle veuve.",
                 personnes.get(23)));
-        Role roleList;
-
-        roleList = new Role(films.get(0), personnes.get(0), "Le juge Rousseau", "1");
-        films.get(0).addRole(roleList);
-        personnes.get(0).addRole(roleList);
-
-        roleList = new Role(films.get(0), personnes.get(1), "La guerre des étoiles", "2");
-        films.get(1).addRole(roleList);
-        personnes.get(1).addRole(roleList);
-
-        roleList = new Role(films.get(0), personnes.get(2), "Pretty woman", "3");
-        films.get(2).addRole(roleList);
-        personnes.get(2).addRole(roleList);
-
-        roleList = new Role(films.get(0), personnes.get(3), "BEN-HUR", "4");
-        films.get(3).addRole(roleList);
-        personnes.get(3).addRole(roleList);
-
-        roleList = new Role(films.get(0), personnes.get(4), "E.T. l'extra-terrestre", "4");
-        films.get(4).addRole(roleList);
-        personnes.get(4).addRole(roleList);
-
-        roleList = new Role(films.get(0), personnes.get(5), "Légendes d'automne", "5" );
-        films.get(5).addRole(roleList);
-        personnes.get(5).addRole(roleList);
+//on ajoute les role en dur en ce rappelant de la position de chacun dans la liste
+        roles.add(new Role(1, "rousseau", personnes.get(0), films.get(0)));
+        roles.add(new Role(2, "Bouvier", personnes.get(1), films.get(0)));
+        roles.add(new Role(3, "rose", personnes.get(2), films.get(0)));
+        roles.add(new Role(1, "skywalker", personnes.get(3), films.get(1)));
+        roles.add(new Role(2, "solo", personnes.get(4), films.get(1)));
+        roles.add(new Role(3, "organa", personnes.get(5), films.get(1)));
+        roles.add(new Role(1, "lewis", personnes.get(6), films.get(2)));
+        roles.add(new Role(2, "ward", personnes.get(7), films.get(2)));
+        roles.add(new Role(3, "james", personnes.get(8), films.get(2)));
+        roles.add(new Role(1, "William Ludlow", personnes.get(9), films.get(5)));
+        roles.add(new Role(2, "Tristan Ludlow", personnes.get(10), films.get(5)));
+        roles.add(new Role(3, "Alfred Ludlow", personnes.get(11), films.get(5)));
+        roles.add(new Role(4, "Samuel Ludlow", personnes.get(12), films.get(5)));
+        roles.add(new Role(1, "Eliott", personnes.get(13), films.get(4)));
+        roles.add(new Role(2, "Gertie", personnes.get(14), films.get(4)));
+        roles.add(new Role(3, "Mary", personnes.get(15), films.get(4)));
+        roles.add(new Role(1, "Ben-Hur", personnes.get(16), films.get(3)));
+        roles.add(new Role(2, "Messala", personnes.get(17), films.get(3)));
+        roles.add(new Role(3, "Arrius", personnes.get(18), films.get(3)));
 
 
-    }
+//on utilise ces methodes pour ajouter les roles au personnes concernée
+        for (Personne personne : personnes) {
+            List<Role> test = new ArrayList<>();
+            for (Role role : roles) {
+                if (role.getPersonne() == personne) {
+                    test.add(role);
+                }
+            }
+            personne.setRoles(test);
+        }
+                //on utilise ces methodes pour ajouter les roles au films concernés
+                for (Film film : films) {
+                    List<Role> test = new ArrayList<>();
+                    for (Role role : roles) {
+                        if (role.getFilm() == film) {
+                            test.add(role);
+                        }
+                    }
+                    film.setRole(test);
+                    System.out.println(film.getRoles().get(0));
+                }
+            }
 
-    public List<Personne> getPersonnes() {
-        return personnes;
-    }
+        }
 
-    public List<Film> getFilms() {
-        return films;
-    }
-}
+
+
+
+
+
+
+
+

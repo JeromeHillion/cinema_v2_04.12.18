@@ -1,23 +1,33 @@
 package fr.laerce.model;
 
 public class Role{
-private Film film;
-private Personne personne;
-String titre, alias;
 
-    public Role(Film film, Personne personne, String titre, String alias) {
-        this.film = film;
+    private Integer place;
+    private  String nom;
+    private Personne personne;
+    private Film film;
+
+    public Role(Integer place, String nom, Personne personne, Film film) {
+        this.place = place;
+        this.nom = nom;
         this.personne = personne;
-        this.titre = titre;
-        this.alias = alias;
-    }
-
-    public Film getFilm() {
-        return film;
-    }
-
-    public void setFilm(Film film) {
         this.film = film;
+    }
+
+    public Integer getPlace() {
+        return place;
+    }
+
+    public void setPlace(Integer place) {
+        this.place = place;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public Personne getPersonne() {
@@ -28,19 +38,21 @@ String titre, alias;
         this.personne = personne;
     }
 
-    public String getTitre() {
-        return titre;
+    public Film getFilm() {
+        return film;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setFilm(Film film) {
+        this.film = film;
     }
 
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
+    @Override
+    public String toString() {
+        return "Role{" +
+                "place=" + place +
+                ", nom='" + nom + '\'' +
+                ", personne=" + personne.getNom() +
+                ", film=" + film.getTitre() +
+                '}';
     }
 }

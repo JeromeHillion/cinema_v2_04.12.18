@@ -1,5 +1,6 @@
 package fr.laerce;
 
+import fr.laerce.model.DataModel;
 import fr.laerce.model.Film;
 import fr.laerce.model.Personne;
 
@@ -14,10 +15,9 @@ public class App
 {
     public static void main( String[] args )
     {
-        List<Personne> personnes = new ArrayList<>();
-        List<Film> films = new ArrayList<>();
-        Film film = new Film();
-        System.out.println( film.getTitre("titre") );
+        DataModel dataModel = new DataModel();
+        dataModel.getFilms();
+        dataModel.getFilms();
     }
 
 }

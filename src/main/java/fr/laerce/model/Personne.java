@@ -1,15 +1,25 @@
 package fr.laerce.model;
 
-import com.sun.tools.javac.util.List;
+
+import java.util.List;
 
 import java.util.Objects;
 
-public class Personne {
+public class Personne{
     private String nom;
     private String prenom;
     private Integer naissance;
     private String photoPath;
-    public List<Role> roleList;
+    private List<Object> roles;
+
+    public void setRoles(java.util.List<Role> role) {
+        this.roles = roles;
+    }
+
+    public List<Object> getRoles() {
+        return roles;
+    }
+
 
     public Personne(String nom, String prenom, Integer naissance, String photoPath) {
         this.nom = nom;
@@ -78,6 +88,6 @@ public class Personne {
                 '}';
     }
 
-    public void addRole(Role roleList) {
-    }
+
+
 }

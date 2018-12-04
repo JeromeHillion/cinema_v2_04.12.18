@@ -1,5 +1,6 @@
 package fr.laerce.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Film {
@@ -8,6 +9,15 @@ public class Film {
     private String affiche;
     private String resume;
     private Personne realisateur;
+    private List<Role> roles;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRole(List<Role> roles) {
+        this.roles = roles;
+    }
 
     public Film(String titre, Double notation, String affiche, String resume, Personne realisateur) {
         this.titre = titre;
@@ -19,7 +29,7 @@ public class Film {
     public Film() {
     }
 
-    public String getTitre(String titre) {
+    public String getTitre() {
         return this.titre;
     }
 
@@ -56,14 +66,14 @@ public class Film {
         if (this == o) return true;
         if (!(o instanceof Film)) return false;
         Film film = (Film) o;
-        return Objects.equals(getTitre("titre"), film.getTitre("titre")) &&
+        return Objects.equals(getTitre(), film.getTitre()) &&
                 Objects.equals(getNotation(), film.getNotation()) &&
                 Objects.equals(getResume(), film.getResume());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTitre("titre"), getNotation(), getResume());
+        return Objects.hash(getTitre(), getNotation(), getResume());
     }
 
     @Override
@@ -76,6 +86,5 @@ public class Film {
                 '}';
     }
 
-    public void addRole(Role role) {
-    }
+
 }
